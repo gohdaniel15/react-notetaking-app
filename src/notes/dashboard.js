@@ -1,5 +1,6 @@
 import React from 'react';
 import Note from './note.js';
+import Sidebar from './sidebar.js';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -31,12 +32,27 @@ class Dashboard extends React.Component {
     })
   }
 
+  selectNote(index) {
+    let newNoteIndex = index
+
+    this.setState({
+      currentNoteIndex: newNoteIndex
+    })
+  }
+
   render() {
     return (
       <div>
         <div>
           <h1>Daniel's NoteTaking App</h1>
           <button onClick={() => this.addNewNote()}>Add New Note</button>
+        </div>
+        <div>
+          <Sidebar
+            noteArray = {this.state.noteArray}
+            currentNote = {this.state.noteArray[this.state.currentNoteIndex]}
+            selectNote = {(e) => this.selectNote(e)}
+          />
         </div>
         <div>
           <Note

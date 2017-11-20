@@ -1,13 +1,7 @@
 import React from 'react';
 
 const Note = (props) => {
-  if (!props.currentNote) {
-    return(
-      <div>
-        Please add a new note
-      </div>
-    )
-  } else {
+  if (props.currentNote) {
     return(
       <div>
         <div>
@@ -23,6 +17,12 @@ const Note = (props) => {
             placeholder='Edit your note here...'
           />
         </div>
+      </div>
+    )
+  } else {
+    return(
+      <div>
+        Please add a new note
       </div>
     )
   }
