@@ -12,7 +12,7 @@ class Sidebar extends React.Component {
       return array.map((note, index) => {
         const { title, value } = note
         return(
-          <li onClick={() => this.props.selectNote(index)}>{title}</li>
+          <li onClick={() => this.props.selectNote(index)} className='list-group-item'>{title}</li>
         )
       })
     }
@@ -20,7 +20,7 @@ class Sidebar extends React.Component {
 
   render() {
     return(
-      <ul>
+      <ul className='list-group'>
         {this.renderTitles(this.props.noteArray)}
       </ul>
     )
