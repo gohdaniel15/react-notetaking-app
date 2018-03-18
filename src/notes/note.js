@@ -16,6 +16,7 @@ const Note = (props) => {
             placeholder='Edit your note here...'
             onChange={(e) => props.handleValueChange(e)}
             className='form-control'
+            rows="20"
           />
         </div>
       </div>

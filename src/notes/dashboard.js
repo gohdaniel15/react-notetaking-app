@@ -11,6 +11,17 @@ class Dashboard extends React.Component {
     }
   }
 
+  componentDidMount() {
+    fetch('http://localhost:3001/notes')
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          noteArray: data,
+          currentNoteIndex: 0
+        })
+      })
+  }
+
   addNewNote() {
     let newNoteArray = this.state.noteArray
     newNoteArray.push({title: 'Insert Title Here', value: ''})
@@ -57,7 +68,7 @@ class Dashboard extends React.Component {
           href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'
           rel='stylesheet'
         />
-        <div clasName='container'>
+        <div className='container'>
           <div className='row text-center'>
             <h1 className='col-xs-12'>Daniels NoteTaking App</h1>
             <button onClick={() => this.addNewNote()} className='btn btn-primary col-md-6 col-md-offset-3'>Add New Note</button>
@@ -67,7 +78,7 @@ class Dashboard extends React.Component {
             <div className='col-md-3'>
               <Sidebar
                 noteArray = {this.state.noteArray}
-                currentNote = {this.state.noteArray[this.state.currentNoteIndex]}
+                currentNote = {this.state.noteArray[0]}
                 selectNote = {(e) => this.selectNote(e)}
               />
             </div>
