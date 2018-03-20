@@ -33,6 +33,20 @@ class Dashboard extends React.Component {
     })
   }
 
+  sync(e) {
+    e.preventDefault();
+    fetch('http://localhost:3001/notes/sync', {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ "sync": this.state.noteArray })
+    }).then((response) => {
+      response.json()
+    }).then((response) => this.componentDidMount())
+  }
+
   handleTitleChange(e) {
     const { currentNoteIndex, noteArray } = this.state
     let note = {...noteArray[currentNoteIndex], title: e.target.value}
@@ -72,6 +86,7 @@ class Dashboard extends React.Component {
           <div className='row text-center'>
             <h1 className='col-xs-12'>Daniels NoteTaking App</h1>
             <button onClick={() => this.addNewNote()} className='btn btn-primary col-md-6 col-md-offset-3'>Add New Note</button>
+            <button onClick={(e) => this.sync(e)} className='btn btn-success col-md-6 col-md-offset-3'>Sync</button>
           </div>
           <hr />
           <div className='row'>
