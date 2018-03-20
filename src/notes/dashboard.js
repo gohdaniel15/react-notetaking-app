@@ -78,10 +78,6 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div>
-        <link
-          href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'
-          rel='stylesheet'
-        />
         <div className='container'>
           <div className='row text-center'>
             <h1 className='col-xs-12'>Daniels NoteTaking App</h1>
